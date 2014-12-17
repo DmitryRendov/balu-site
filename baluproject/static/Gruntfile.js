@@ -3,7 +3,7 @@
  *
  * Copyright (c) 2014 Dmitry Vl. Rendov
  * Licensed under the MIT license.
- * https://github.com/DmitryRendov/nanny-theme/blob/master/LICENSE
+ * https://github.com/DmitryRendov/inv-theme/blob/master/LICENSE
  */
 
 'use strict';
@@ -35,6 +35,18 @@ module.exports = function(grunt) {
           flatten : true,
           src : '<%= globalConfig.bower_path %>/html5shiv/dist/html5shiv.min.js',
           dest : '<%= globalConfig.scripts %>/',
+          filter : 'isFile'
+        }, {
+          expand : true,
+          flatten : true,
+          src : '<%= globalConfig.bower_path %>/bootstrap/dist/js/bootstrap.min.js',
+          dest : '<%= globalConfig.scripts %>/',
+          filter : 'isFile'
+        }, {
+          expand : true,
+          flatten : true,
+          src : '<%= globalConfig.bower_path %>/bootstrap/dist/css/bootstrap.min.css',
+          dest : '<%= globalConfig.styles %>/',
           filter : 'isFile'
         }, {
           expand : true,
@@ -161,7 +173,7 @@ module.exports = function(grunt) {
     uglify : {
       options : {
         // the banner is inserted at the top of the output
-        banner : '/*! \n * <%= pkg.name %> <%= pkg.version %> (<%= pkg.homepage %>) \n * Copyright <%= grunt.template.today("yyyy") %> Dmitry Vl. Rendov \n * Licensed under MIT (https://github.com/DmitryRendov/nanny-theme/blob/master/LICENSE) \n */ \n'
+        banner : '/*! \n * <%= pkg.name %> <%= pkg.version %> (<%= pkg.homepage %>) \n * Copyright <%= grunt.template.today("yyyy") %> Dmitry Vl. Rendov \n * Licensed under MIT (https://github.com/DmitryRendov/inv-theme/blob/master/LICENSE) \n */ \n'
       },
       dist : {
         files : {
