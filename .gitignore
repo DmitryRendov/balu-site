@@ -27,9 +27,8 @@ libraries
 components
 
 # Production files
-js/
-css/styles.min.css
-js/app.min.js
+#styles.min.css
+#app.min.js
 
 #system directives
 
