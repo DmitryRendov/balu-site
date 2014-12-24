@@ -1,0 +1,77 @@
+/* collapsable tree */
+
+.tree {
+    .border-radius(@baseBorderRadius);
+    .box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
+    margin: 10px;
+    padding: 19px;
+    a {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 90%;
+    }
+    li {
+        list-style-type: none;
+        margin: 0px 0;
+        padding: 4px 0px 0px 2px;
+        position: relative;
+        &::before, &::after {
+            content: '';
+            left: -30px;
+            position: absolute;
+            right: auto;
+        }
+        &::before {
+            border-left: 1px solid @gray-light;
+            bottom: 50px;
+            height: 100%;
+            top: -1px;
+            width: 1px;
+        }
+        &::after {
+            border-top: 1px solid @gray-light;
+            top: 13px;
+            width: 23px;
+        }
+        .leaf {
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border: 1px solid @gray-light;
+            border-radius: 5px;
+        }
+        .treehandle {
+            display: inline;
+        }
+        span {
+            display: inline-block;
+            line-height: 14px;
+            padding: 2px 4px;
+            text-decoration: none;
+        }
+        &.parent_li > span {
+            cursor: pointer;
+            /*Time for some hover effects*/
+            &:hover, &:hover+ul li span {
+                -moz-border-radius: 5px;
+                -webkit-border-radius: 5px;
+                border: 1px solid @gray-light;
+                border-radius: 5px;
+                background: @gray-lighter;
+                border: 1px solid @gray;
+                color: #000;
+            }
+        }
+        /*Remove connectors after last child*/
+        &:last-child::before {
+            height: 30px;
+        }
+    }
+    /*Remove connectors before root*/
+    > ul > li::before, > ul > li::after {
+        border: 0;
+    }
+
+    .i3servicelist ul {list-style-type: none;}
+    .i3servicelist_element {border-bottom:1px solid #ddd;display:block;margin:0;padding: 8px;}
+}
+

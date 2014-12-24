@@ -8,5 +8,7 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'inventory.views.home_page'),
+    url(r'^login/', 'inventory.views.auth_page'),
     url(r'^inventory/$', 'inventory.views.show_inventory_classes'),
+    url(r'^inventory/(?P<id>\d{1,2})/edit.html$', 'inventory.views.edit_inventory'),
 )

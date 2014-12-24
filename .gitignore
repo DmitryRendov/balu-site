@@ -39,3 +39,5 @@ eggs
 .idea
 *.pyc
 media
+*.txt
+*migrations/*

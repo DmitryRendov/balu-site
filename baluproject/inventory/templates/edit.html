@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load mptt_tags %}
+
+{% block title %}Редактируем инвентарь.{% endblock %}
+
+{% block content %}
+{{ block.super }}
+
+<div class="inventoryedit">
+
+    {{id}}
+    <h1>Редактирование</h1>
+
+</div>
+<!-- /tree -->
+{% endblock %}

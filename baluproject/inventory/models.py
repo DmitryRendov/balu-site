@@ -11,9 +11,9 @@ class Inventory(models.Model):
     name = models.CharField("Класс", max_length=200)
     parent = models.ForeignKey('self', blank=True, null=True, verbose_name="Родитель", related_name='child')
 
-    description = models.TextField()
+    description = models.TextField(blank=True, null=True)
     is_container = models.BooleanField(default=False)
-    thumb = models.ImageField(upload_to='thumbs')
+    thumb = models.ImageField(upload_to='thumbs',blank=True)
 
     def __unicode__(self):
         return force_unicode("%s %s" % (self.name, self.description))
@@ -22,10 +22,13 @@ mptt.register(Inventory,)
 
 class Album(models.Model):
     name = models.CharField(max_length=128)
-    slug = models.SlugField()
-    summary = models.TextField()
+    slug = models.SlugField(max_length=128, verbose_name='Краткий формат для url')
+    summary = models.TextField(blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now_add=True)
+
+    def __unicode__(self):
+        return force_unicode("%s %s" % (self.name, self.summary))
 
 class Photo(models.Model):
     title = models.CharField(max_length=256)
