@@ -12,10 +12,14 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.RemoveField(
+            model_name='inventory',
+            name='is_container',
+        ),
         migrations.AlterField(
             model_name='inventoryitem',
             name='created',
-            field=models.DateTimeField(default=datetime.datetime(2014, 12, 12, 12, 14, 3, 541319)),
+            field=models.DateTimeField(default=datetime.datetime(2014, 12, 24, 9, 45, 38, 866775)),
             preserve_default=True,
         ),
     ]

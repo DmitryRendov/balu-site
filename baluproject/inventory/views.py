@@ -3,7 +3,6 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django import forms
 
-
 def show_inventory_classes(request):
     return render_to_response("inventory.html",
                               {'nodes': Inventory.objects.all()},
