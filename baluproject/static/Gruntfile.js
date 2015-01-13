@@ -11,17 +11,23 @@
 module.exports = function(grunt) {
 
   var globalConfig = {
-    images : 'images',
-    styles : 'css',
-    fonts : 'fonts',
-    scripts : 'js',
-    src : 'src',
-    bower_path : 'libraries'
+    images : 'images',        /* папка для картинок сайта */
+    styles : 'css',           /* папка для готовый файлов css стилей */
+    fonts : 'fonts',          /* папка для шрифтов */
+    scripts : 'js',           /* папка для готовых скриптов js */
+    src : 'src',              /* папка с исходными кодами js, less , etc. */
+    bower_path : 'libraries'  /* папка где хранятся библиотеки jquery, bootstrap, SyntaxHighlighter, etc. */
   };
 
   grunt.initConfig({
     globalConfig : globalConfig,
     pkg : grunt.file.readJSON('package.json'),
+    /**
+    * Задача "copy"
+    *
+    * выбрать из библиотек lobalConfig.bower_path = 'libraries'
+    * нужные для проекта файлы и скоипровать их в соответствующие папки
+    */
     copy : {
       main : {
         files : [{
@@ -69,6 +75,12 @@ module.exports = function(grunt) {
         }]
       }
     },
+    /**
+    * Задача "modernizr"
+    *
+    * используя базовую версию библиотеки modernizr.js
+    * выполнить кастомизацию и скопировать в папку scripts проекта
+    */
     modernizr : {
 
       dist : {
@@ -124,10 +136,21 @@ module.exports = function(grunt) {
       }
 
     },
-    clean : {
+    /**
+    * Задача "clean"
+    *
+    * очистить(удалить) production-файлы перед их повторной "сборкой"
+    */
+   clean : {
       js : ['<%= globalConfig.scripts %>/app.js', '<%= globalConfig.scripts %>/app.min.js'],
       css : ['<%= globalConfig.styles %>/styles.css', '<%= globalConfig.styles %>/styles.min.css']
     },
+    /**
+    * Задача "less"
+    *
+    * преобразовать файлы less в css  с последующим сжатием, оптимизацией и
+    * копированием результатов в папку styles проекта
+    */
     less : {
       development : {
         options : {
@@ -150,6 +173,12 @@ module.exports = function(grunt) {
         }
       }
     },
+    /**
+    * Задача "watch"
+    *
+    * отслеживать изменения в файлах less и js  с последующим сжатием, оптимизацией и
+    * копированием результатов в соответствующие папки проекта
+    */
     watch : {
       styles : {
         files : ['<%= globalConfig.src %>/less/*.less'],
@@ -166,6 +195,11 @@ module.exports = function(grunt) {
         }
       }
     },
+    /**
+    * Задача "concat"
+    *
+    * "склеить" все файлы js  в один файл, с добавлением "шапки-баннера"
+    */
     concat : {
       dist : {
         src : ['<%= globalConfig.src %>/js/**/*.js'],
@@ -176,12 +210,23 @@ module.exports = function(grunt) {
         }
       }
     },
+    /**
+    * Задача "jshint"
+    *
+    * проверить все файлы js на предмет соответствия стандартам
+    * используя заданные в файле .jshintrc условия верфикации javascript кода
+    */
     jshint : {
       all : ['Gruntfile.js', '<%= globalConfig.src %>/js/**/*.js'],
       options : {
         jshintrc : '.jshintrc'
       }
     },
+    /**
+    * Задача "uglify"
+    *
+    * сжать финальный js файл и добавить к нему шапку-баннер
+    */
     uglify : {
       options : {
         // the banner is inserted at the top of the output

@@ -10,6 +10,7 @@ $(function () {
             $(this).attr('title', 'Свернуть эту ветвь').find(' > i').addClass('fa-minus').removeClass('fa-plus');
         }
         //FixMe: Add folder-open-close behaviour
+
         //var isFolder = $(this).find(' > i').hasClass("fa-folder-open") ;
 
         e.stopPropagation();

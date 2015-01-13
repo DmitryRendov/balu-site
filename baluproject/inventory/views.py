@@ -18,9 +18,9 @@ def auth_page(request):
                               context_instance=RequestContext(request))
 
 
-class InventoryForm(forms.Form):
-    name = forms.CharField(max_length=200)
-    description = forms.CharField(widget=forms.Textarea)
+#class InventoryForm(forms.Form):
+#    name = forms.CharField(max_length=200)
+#    description = forms.CharField(widget=forms.Textarea)
     #is_container = forms.BooleanField(default=False)
 
 def edit_inventory(request, id):

@@ -6,20 +6,21 @@ from PIL import Image
 
 class Album(models.Model):
     name = models.CharField(max_length=128)
-    slug = models.SlugField(max_length=128, verbose_name='Краткий формат для url')
+    slug = models.SlugField(max_length=128, verbose_name='Краткий формат для url', unique=True)
     summary = models.TextField(blank=True, verbose_name='Описание для альбома')
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_modified = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
         return force_unicode("%s %s" % (self.name, self.summary))
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now_add=True)
 
 class Photo(models.Model):
     title = models.CharField(max_length=256)
     summary = models.TextField(blank=True, null=True)
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_modified = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='photos')
+    num_views = models.PositiveIntegerField(editable=False, default=0)
     album = models.ForeignKey(Album)
     is_cover_photo = models.BooleanField(default=False)
 

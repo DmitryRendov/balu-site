@@ -23,7 +23,9 @@
     "html5shiv": "latest",
     "respond": "latest",
     "SyntaxHighlighter": "latest",
-    "matchHeight": "~0.5.2"
+    "matchHeight": "~0.5.2",
+    "jquery-cookie": "1.4.1",
+    "jqtree": "0.21.0"
   },
   "homepage": "https://github.com/DmitryRendov/inv-theme",
   "main": "index.html",
