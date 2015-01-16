@@ -26,9 +26,13 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="/login/">Добро пожаловать, admin</a></li>
-            <li><a href="/search/">Мой аккаунт</a></li>
-            <li><a href="/search/">Выйти</a></li>
+            {% if username %}
+            <li><a href="/{{ username }}/">Мой аккаунт</a></li>
+            <li><a href="/auth/logout/">Выйти [{{ username }}]</a></li>
+            {% else %}
+            <li class="active"><a href="/auth/login/">Войти</a></li>
+            <li><a href="/auth/register/">Регистрация</a></li>
+            {% endif%}
           </ul>
         </div><!--/.nav-collapse -->
       </div>

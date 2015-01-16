@@ -1,29 +1,24 @@
 from inventory.models import Inventory
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django import forms
+from django.contrib import auth
+from django.contrib.auth.decorators import login_required
 
+
+@login_required(login_url='/auth/login/')
 def show_inventory_classes(request):
     return render_to_response("inventory.html",
-                              {'nodes': Inventory.objects.all()},
+                              {'nodes': Inventory.objects.all(), 'username': auth.get_user(request).username},
                               context_instance=RequestContext(request))
 
 def home_page(request):
     return render_to_response("base.html",
+                              {'username': auth.get_user(request).username},
                               context_instance=RequestContext(request))
 
 
-def auth_page(request):
-    return render_to_response("login.html",
-                              context_instance=RequestContext(request))
-
-
-#class InventoryForm(forms.Form):
-#    name = forms.CharField(max_length=200)
-#    description = forms.CharField(widget=forms.Textarea)
-    #is_container = forms.BooleanField(default=False)
-
+@login_required
 def edit_inventory(request, id):
     return render_to_response("edit.html",
-                              {'id' : id},
+                              {'id' : id, 'username': auth.get_user(request).username},
                               context_instance=RequestContext(request))

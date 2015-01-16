@@ -3,7 +3,8 @@
 {% load staticfiles %}
 {% load mptt_tags %}
 
-{% block title %}Главный дашбоард. Добро пожаловать.{% endblock %}
+{% block title %}Главный дашбоард. Добро пожаловать {{ username }}.{% endblock %}
+
 
 {% block content %}
 {{ block.super }}

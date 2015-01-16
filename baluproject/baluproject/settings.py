@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django_mptt_admin',
     'inventory',
     'album',
+    'loginsys',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -55,6 +56,7 @@ MIDDLEWARE_CLASSES = (
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
     os.path.join(BASE_DIR, 'inventory/templates'),
+    os.path.join(BASE_DIR, 'loginsys/templates'),
 )
 
 ROOT_URLCONF = 'baluproject.urls'
@@ -83,7 +85,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-RU'
 
 TIME_ZONE = 'UTC'
 
@@ -133,8 +135,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static/")
     #'/var/www/static/',
 #)
 
-MEDIA_URL = "/media/"
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 MPTT_ADMIN_LEVEL_INDENT = 20
+
+LOGIN_URL = '/auth/login/'
