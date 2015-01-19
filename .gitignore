@@ -40,4 +40,4 @@ eggs
 *.pyc
 media
 *.txt
-*migrations/*
+migrations*
