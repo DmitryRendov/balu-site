@@ -11,10 +11,14 @@ class Inventory(models.Model):
     description = models.TextField("Общее описание", blank=True, null=True)
     thumb = models.ImageField("Логотип", upload_to='thumbs',blank=True)
     created = models.DateTimeField(default=datetime.now(), auto_now_add=True)
-    modified = models.DateTimeField(default=datetime.now(), auto_now_add=True)
+    modified = models.DateTimeField(blank=True, null=True)
     attributes = models.ManyToManyField(AttributeType, blank=True)
 
     def __unicode__(self):
-        return force_unicode("%s %s" % (self.name, self.description))
+        return force_unicode("%s" % (self.name))
+
+    class Meta:
+        verbose_name = u'Класс инвентаря'
+        verbose_name_plural = u'Классы инвентаря'
 
 mptt.register(Inventory,)

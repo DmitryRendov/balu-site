@@ -11,25 +11,32 @@
 
 <div class="tree well">
     <h2>Классы инвентаря</h2>
-    <div class="handle">
-        <i class="fa fa-pencil-square-o"></i>
+    <div class="contextual">
+        <a href="add.html" title="Добавить новый класс"><i class="fa fa-file-o"></i> Добавить новый класс</a>
     </div>
-<ul>
-    {% recursetree nodes %}
-        <li>
-            {% if not node.is_leaf_node %}<span class="leaf"><i class="fa fa-minus"></i></span>{% endif %}
-            <span rel="tooltip" data-placement="left" data-html="true" title="{{ node.tooltip|safe }}">
-                {{ node.name }}
-            </span>
-            <div class="treehandle"><a href="{{ node.id }}/edit.html"><i class="fa fa-pencil-square-o"></i></a></div>
-            {% if not node.is_leaf_node %}
-                <ul class="children">
-                    {{ children }}
-                </ul>
-            {% endif %}
-        </li>
-    {% endrecursetree %}
-</ul>
+
+    {{status}}
+
+    <ul class="tree">
+        {% recursetree nodes %}
+            <li>
+                {% if not node.is_leaf_node %}<span class="leaf"><i class="fa fa-minus"></i></span>{% endif %}
+                <span rel="tooltip" data-placement="left" data-html="true" title="{{ node.tooltip|safe }}">
+                    {{ node.name }}
+                </span>
+                <div class="treehandle">
+                    <a href="{{ node.id }}/edit.html"><i class="fa fa-pencil-square-o"></i></a>
+                    <a href="{{ node.id }}/delete.html" data-confirm="Вы уверены?" data-method="delete" rel="nofollow"><i class="fa fa-times"></i></a>
+                </div>
+                {% if not node.is_leaf_node %}
+                    <ul class="children">
+                        {{ children }}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endrecursetree %}
+    </ul>
+
 </div>
 <!-- /tree -->
 {% endblock %}
