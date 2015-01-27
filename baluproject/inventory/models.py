@@ -4,6 +4,7 @@ from datetime import datetime
 from django.db import models
 from django.utils.encoding import force_unicode
 from attribute import AttributeType
+import jsonfield
 
 class Inventory(models.Model):
     name = models.CharField("Класс", max_length=200)

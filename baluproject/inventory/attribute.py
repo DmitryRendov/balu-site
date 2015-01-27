@@ -21,10 +21,11 @@ class AttributeValue(models.Model):
 
 class AttributeType(models.Model):
     type = models.CharField(max_length=15, choices=ATTRIBUTE_CHOICES, default=1)
-    description = models.CharField(max_length=150, blank=True)
+    name = models.CharField(max_length=150, default="None")
     value = models.ForeignKey(AttributeValue, blank=True, null=True)
+    required = models.NullBooleanField(blank=True)
     created = models.DateTimeField(default=datetime.now(), auto_now_add=True)
-    modified = models.DateTimeField(default=datetime.now(), auto_now_add=True)
+    modified = models.DateTimeField(default=datetime.now(), auto_now=True)
     def __unicode__(self):
-        return force_unicode("%s" % (self.type))
+        return force_unicode("%s" % (self.name))
 
