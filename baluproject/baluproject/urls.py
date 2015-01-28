@@ -11,4 +11,5 @@ urlpatterns = patterns('',
     url(r'^$', 'inventory.views.home_page'),
     url(r'^inventory/', include('inventory.urls')),
     url(r'^auth/', include('loginsys.urls')),
+    url(r'^attributes/', include('attributes.urls')),
 )

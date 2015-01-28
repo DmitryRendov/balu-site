@@ -9,5 +9,4 @@ urlpatterns = patterns('',
     url(r'^(?P<id>\d{1,2})/edit.html$', 'inventory.views.edit_inventory'),
     url(r'^(?P<id>\d{1,2})/delete.html$', 'inventory.views.delete_inventory'),
     url(r'^add.html$', 'inventory.views.add_inventory'),
-    url(r'^(?P<id>\d{1,2})/attributes.html$', 'inventory.views.attributes'),
 )

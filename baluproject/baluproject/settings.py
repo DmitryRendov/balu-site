@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'django_mptt_admin',
     'widget_tweaks',
     'jsonfield',
+    'attributes',
     'inventory',
     'album',
     'loginsys',

@@ -1,16 +1,15 @@
 # coding=utf-8
 from django.contrib import admin
 from django_mptt_admin.admin import DjangoMpttAdmin
-from inventory.models import Inventory
+from models import Inventory
 from inventory_item import InventoryItem
-from attribute import AttributeType, AttributeValue
 
 class InventoryAdmin(DjangoMpttAdmin):
     list_display = ('name', 'parent', 'description', 'thumb', 'created', 'modified')
     fieldsets = [
         (None,             {'fields': ['name', 'parent']}),
         ('Описание',       {'fields': ['description']}),
-        ('Атрибуты',       {'fields': ['attributes']}),
+        ('Атрибуты',       {'fields': ['global_attrs', 'local_attrs']}),
         ('Картинка-логотип класса', {'fields': ['thumb']}),
     ]
     list_filter = ('created', 'modified',)
@@ -27,7 +26,3 @@ class InventoryItemAdmin(admin.ModelAdmin):
 
 admin.site.register(Inventory, InventoryAdmin)
 admin.site.register(InventoryItem, InventoryItemAdmin)
-admin.site.register(AttributeType)
-admin.site.register(AttributeValue)
-
-

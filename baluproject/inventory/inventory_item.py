@@ -10,5 +10,10 @@ class InventoryItem(models.Model):
     amount = models.IntegerField(default=0)
     created = models.DateTimeField(default=datetime.now())
     modified = models.DateTimeField(default=datetime.now(), auto_now_add=True)
+
     def __unicode__(self):
         return force_unicode("%s %s" % (self.inventory, self.amount))
+
+    class Meta:
+        verbose_name = u'Объект инвентаря'
+        verbose_name_plural = u'Объекты инвентаря'

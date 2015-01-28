@@ -3,22 +3,20 @@
 {% load mptt_tags %}
 {% load widget_tweaks %}
 
-{% block title %}Редактируем инвентарь.{% endblock %}
+{% block title %}Добавить новый глобальный атрибут.{% endblock %}
 
 {% block content %}
 {{ block.super }}
 
 <div class="inventoryedit">
 
-    <h1>Редактирование {{ id }}</h1>
+    <h1>Добавить новый глобальный атрибут</h1>
 
     <div class="row">
     <div class="col-md-8">
       <form class="form-horizontal" role="form" method="post" action="">
          <fieldset>
          {% csrf_token %}
-           <input type="hidden" placeholder="id" class="form-control" value="{{id}}">
-
             {% for hidden in form.hidden_fields %}
                 {{ hidden }}
             {% endfor %}
@@ -26,20 +24,17 @@
             {% for field in form.visible_fields %}
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="textinput">{{ field.label }}</label>
-                <div class="col-sm-10">
-                    {% if field.name == "attrs" %}
-                        {% for attr in field %}
-                            <div class="checkbox">
-                              {{ attr }} {{ attr. }}
-                            </div>
-                        {% endfor %}
-                        <div class="checkbox">
-                            <i class="fa fa-file-o"></i> &nbsp;<a href="/attributes/add.html">Добавить новый глобальный атрибут</a>
+
+                    {% if field.name == "required" %}
+                        <div class="col-sm-1">
+                          {{ field|add_class:"form-control" }}
                         </div>
                     {% else %}
-                        {{ field|add_class:"form-control" }}
+                        <div class="col-sm-10">
+                          {{ field|add_class:"form-control" }}
+                        </div>
                     {% endif %}
-                </div>
+
                 {% if field.errors %}
                     <div class="alert alert-warning alert-dismissible" role="alert">
                       <button type="button" class="close" data-dismiss="alert" aria-label="Закрыть"><span aria-hidden="true">&times;</span></button>
@@ -53,7 +48,7 @@
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
               <div class="pull-right">
-                <button type="submit" name="cancel" value="cancel" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-default">Cancel</button>
                 <button type="submit" class="btn btn-primary">Save</button>
               </div>
             </div>

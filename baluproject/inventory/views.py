@@ -1,7 +1,7 @@
 # coding=utf-8
 from django.core.context_processors import csrf
 from models import Inventory
-from attribute import AttributeType
+from attributes.models import Attribute
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from django.contrib import auth
@@ -11,7 +11,6 @@ from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext, ugettext_lazy as _
 from mptt.forms import TreeNodeChoiceField
 from mptt.models import MPTTModel
-from attribute import ATTRIBUTE_CHOICES, AttributeValue
 
 @login_required(login_url='/auth/login/')
 def show_inventory_classes(request):
@@ -23,11 +22,11 @@ class InventoryForm(ModelForm):
     name = forms.CharField(label="Класс", max_length=200, help_text="Укажите имя класса")
     description = forms.CharField(label="Описание", required=False)
     parent = TreeNodeChoiceField(queryset=Inventory.objects.all(), required=False)
-    attributes = forms.ModelMultipleChoiceField(queryset=AttributeType.objects.all(), required=False)
+    attrs = forms.ModelMultipleChoiceField(queryset=Attribute.objects.all(), required=False, widget=forms.CheckboxSelectMultiple, label="Доступные атрибуты:")
 
     class Meta:
         model = Inventory
-        fields = ['name', 'parent', 'description', 'attributes']
+        fields = ['name', 'parent', 'description', 'attrs']
 
 @login_required
 def edit_inventory(request, id):
@@ -39,6 +38,9 @@ def edit_inventory(request, id):
     args['username'] = auth.get_user(request).username
     args['form'] = InventoryForm(instance=instance)
     if request.POST:
+        print request.POST
+        if "cancel" in request.POST:
+            return redirect('inventory.views.show_inventory_classes')
         form = InventoryForm(request.POST, instance=instance)
         if form.is_valid():
             form.save()
@@ -81,33 +83,6 @@ def delete_inventory(request, id):
         args['status'] = 'Невозможно удалить выбранный узел!'
 
     return redirect('inventory.views.show_inventory_classes')
-
-class AttributeTypesForm(ModelForm):
-    type = forms.CharField(max_length=15, widget=forms.Select(choices=ATTRIBUTE_CHOICES))
-    name = forms.CharField(max_length=150)
-    required = forms.BooleanField(required=False)
-    value = forms.ModelChoiceField(queryset=AttributeValue.objects.all(), required=False)
-
-    class Meta:
-        model = Inventory
-        fields = ['type', 'name', 'required', 'value']
-
-@login_required
-def attributes(request, id):
-    args = {}
-    args.update(csrf(request))
-    args['id'] = id
-    args['username'] = auth.get_user(request).username
-    args['form'] = AttributeTypesForm()
-    if request.POST:
-        form = AttributeTypesForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('inventory.views.edit_inventory', id=id)
-        else:
-            args['error_messages'] = "Вы ввели некорректные данные. Попробуйте ещё раз."
-    return render_to_response("add_attribute.html",
-                              args)
 
 def home_page(request):
     return render_to_response("base.html",
