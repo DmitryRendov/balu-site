@@ -1,0 +1,118 @@
+@charset "utf-8";
+/**
+ * Copyright (c) 2015 Dmitry Rendov
+ * http://minecraft.of.by
+ *
+ * Name: Main CSS styles
+ * Date: Feb 2015
+ * Description: the main CSS file
+ * Version: 1.0
+ *
+ * Licensed under the MIT License:
+ * http://www.opensource.org/licenses/mit-license.php
+ */
+/************** Global **************/
+@import url(http://fonts.googleapis.com/css?family=Scada:200,300,400,500,600,700&subset=latin,cyrillic);
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:200,300,400,500,600,700&subset=latin,cyrillic);
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  padding-top: 55px;
+}
+
+body, input, textarea {
+  font-family: 'PT Sans', Helvetica, Arial, Geneva, sans-serif;
+}
+
+p {
+  font-family: 'PT Sans', Helvetica, Arial, Geneva, sans-serif;
+  font-weight: normal;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol, li {
+  font-family: 'Scada', Helvetica, Arial, Geneva, sans-serif;
+  font-weight: normal;
+}
+
+h1, h2, h3, h4 {
+  padding: 10px 0 5px 0;
+  margin: 0;
+  color: #FFFFFF;
+}
+
+h2 {
+  color: #f36700;
+}
+
+strong {
+  font-weight: bold;
+}
+
+/************** HTML5 blocks styling **************/
+figure {
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.9em;
+  text-align: center;
+}
+
+/************** Main block **************/
+
+@media (min-width: 767px) {
+  .top-nav-collapse {
+    padding: 0;
+  }
+}
+
+.intro-section {
+  padding-top: 0px;
+}
+
+.header-splash {
+  padding-top: 30px;
+}
+
+.about-section, .howtoplay-section, .faq-section, .projects-section {
+  padding-top: 80px;
+  text-align: center;
+}
+
+.about-section li, .projects-section li {
+  text-align: left;
+}
+
+.sidebar {
+  padding-top: 10px;
+}
+
+.form-inline .form-group {
+  margin: 8px 0;
+}
+
+.btn-brand {
+  background-color: #ff4800;
+  border-color: #ff4800;
+  color: #fff;
+}
+
+.footerTopSection {
+  background: none repeat scroll 0 0 #212121;
+  border-top: 1px solid #e7e7e7;
+  padding: 18px 0;
+}
+
+.footerBottomSection {
+  background: none repeat scroll 0 0 #212121;
+  color: #fff;
+  padding: 18px 0;
+}
+
+@import 'process.less';
