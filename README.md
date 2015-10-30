@@ -1,2 +1,2 @@
 # balu-site
-dumki.by prototype
+dymki.by prototype

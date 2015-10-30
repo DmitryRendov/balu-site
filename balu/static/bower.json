@@ -1,7 +1,7 @@
 {
-  "name": "minecraft.of.by",
+  "name": "dymki.by",
   "version": "0.0.1",
-  "description": "minecraft.of.by project",
+  "description": "dymki.by project",
   "authors": [
     "Dmitry Vl. Rendov"
   ],
@@ -25,7 +25,7 @@
     "SyntaxHighlighter": "latest",
     "matchHeight": "~0.5.2"
   },
-  "homepage": "https://github.com/DmitryRendov/mob",
+  "homepage": "https://github.com/DmitryRendov/balu-site",
   "moduleType": [
     "globals",
     "node"

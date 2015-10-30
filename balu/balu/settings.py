@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'loginsys',
+    'lib',	
 )
 
 AUTH_USER_MODEL = 'loginsys.User'
@@ -53,6 +54,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
 ROOT_URLCONF = 'balu.urls'
@@ -84,7 +86,7 @@ WSGI_APPLICATION = 'balu.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django',
+        'NAME': 'dymkiby',
         'USER': 'django',
         'PASSWORD': '111',
         'HOST': '127.0.0.1',

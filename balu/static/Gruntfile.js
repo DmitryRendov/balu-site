@@ -1,9 +1,9 @@
 /*
  * Gruntfile.js
  *
- * Copyright (c) 2014 Dmitry Vl. Rendov
+ * Copyright (c) 2015 Dmitry Vl. Rendov
  * Licensed under the MIT license.
- * https://github.com/DmitryRendov/nanny-theme/blob/master/LICENSE
+ * https://github.com/DmitryRendov/balu-site/blob/master/LICENSE
  */
 
 'use strict';
@@ -185,7 +185,7 @@ module.exports = function(grunt) {
     uglify : {
       options : {
         // the banner is inserted at the top of the output
-        banner : '/*! \n * <%= pkg.name %> <%= pkg.version %> (<%= pkg.homepage %>) \n * Copyright <%= grunt.template.today("yyyy") %> Dmitry Vl. Rendov \n * Licensed under MIT (https://github.com/DmitryRendov/mob/blob/master/LICENSE) \n */ \n'
+        banner : '/*! \n * <%= pkg.name %> <%= pkg.version %> (<%= pkg.homepage %>) \n * Copyright <%= grunt.template.today("yyyy") %> Dmitry Vl. Rendov \n * Licensed under MIT (https://github.com/DmitryRendov/balu-site/blob/master/LICENSE) \n */ \n'
       },
       dist : {
         files : {

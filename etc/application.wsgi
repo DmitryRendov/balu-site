@@ -14,8 +14,8 @@ framework.
 """
 
 import os, sys
-sys.path.append('/home/dmitry/vhosts/balu.of.by/python-bin/local/lib/python2.7/site-packages/django')
-sys.path.append('/home/dmitry/vhosts/balu.of.by/public_html/balu/')
+sys.path.append('/home/dmitry/vhosts/dymki.by/python-bin/local/lib/python2.7/site-packages/django')
+sys.path.append('/home/dmitry/vhosts/dymki.by/public_html/balu/')
 os.environ['DJANGO_SETTINGS_MODULE'] = 'balu.settings'
 
 # This application object is used by any WSGI server configured to use this

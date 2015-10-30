@@ -4,16 +4,16 @@ except ImportError:
     from distutils.core import setup
 
 config = {
-    'description': 'Игровой сервер minecraft.of.by',
+    'description': 'Усадьба dymki.by',
     'author': 'Dmitry Vl.Rendov',
-    'url': 'http://minecraft.of.by',
+    'url': 'http://dymki.by',
     'author_email': 'drendov@gmail.com',
     'version': ''
                '0.1',
     'install_requires': ['nose'],
-    'packages': ['mob'],
+    'packages': ['balu'],
     'scripts': [],
-    'name': 'mob'
+    'name': 'balu'
 }
 
 setup(**config)
