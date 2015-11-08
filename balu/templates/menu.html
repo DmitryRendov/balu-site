@@ -2,22 +2,18 @@
     <ul id="main-menu" class="md-menu">
         <li><a href="/">Главная</a></li>
         <li><a href="/accomodation/">Размещение</a></li>
-        <li class="have-submenu"><a href="#">Услуги</a>
+        <li class="have-submenu"><a href="#">Сервис</a>
 
             <div class="sub-menu">
                 <ul class="sub-menu-inner">
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="/accomodation/check-available/">Подобрать</a></li>
-                    <li><a href="shortcode.html">Shortcode</a></li>
-                    <li><a href="typography.html">Typography</a></li>
-                    <li><a href="booking-cart.html">Booking Cart</a></li>
-                    <li><a href="checkout.html">CheckOut</a></li>
-                    <li><a href="check-available.html">Check Available</a></li>
+                    <li><a href="/accomodation/check-available/">Подобрать номер</a></li>
+                    <li><a href="shortcode.html">Карта услуг</a></li>
+                    <li><a href="typography.html">Особенные заказы</a></li>
+                    <li><a href="booking-cart.html">Ваш заказ</a></li>
                 </ul>
             </div>
         </li>
         <li><a href="/lib/">блог &amp; новости</a></li>
-        <li><a href="world-of-flawles.html">галерея</a></li>
         <li><a href="contact.html">контакты</a></li>
 
         {% if user.is_authenticated %}

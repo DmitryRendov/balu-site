@@ -5,41 +5,41 @@
 <div class="container clearfix">
     <aside class="grid_3 md-sidebar">
         <section class="box-sidebar">
-            <h3 class="h3 header-sidebar">Check availability</h3>
+            <h3 class="h3 header-sidebar">Подобрать размещение</h3>
 
             <div class="box-booking booking-stack">
-                <form>
+                <form class="form-check-avalability" role="form" action="/accomodation/check-available/" method="post">
+                    {% csrf_token %}
                     <div class="form-group">
-                        <label class="label-control">Arrival Date</label>
+                        <label class="label-control">Дата заезда</label>
 
                         <div class="booking-form select-black">
                             <label class="collapse input">
-                                <input type="text" id="arrival-date" class="input-control border-black"/>
+                                <input type="text" id="arrival-date" name="arrival-date" class="input-control border-black"/>
                             </label>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="label-control">Departure Date</label>
+                        <label class="label-control">Дата Отъезда</label>
 
                         <div class="booking-form select-black">
                             <label class="collapse input">
-                                <input type="text" id="departure-date" class="input-control border-black"/>
+                                <input type="text" id="departure-date" name="departure-date" class="input-control border-black"/>
                             </label>
                         </div>
                     </div>
                     <div class="form-group row clearfix">
                         <div class="col-left">
                             <div class="form-group">
-                                <label class="label-control">Adults</label>
+                                <label class="label-control">Взрослые</label>
 
                                 <div class="input-group select-black">
                                     <label class="collapse">
-                                        <select class="form-select">
+                                        <select class="form-select" name="adults">
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
                                             <option>4</option>
-                                            <option>5</option>
                                         </select>
                                     </label>
                                 </div>
@@ -47,16 +47,15 @@
                         </div>
                         <div class="col-right">
                             <div class="form-group">
-                                <label class="label-control">Children</label>
+                                <label class="label-control">Дети</label>
 
                                 <div class="input-group select-black">
                                     <label class="collapse">
-                                        <select class="form-select">
+                                        <select class="form-select" name="kids">
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
                                             <option>4</option>
-                                            <option>5</option>
                                         </select>
                                     </label>
                                 </div>
@@ -65,7 +64,7 @@
                     </div>
                     <div class="form-group">
                         <label class="label-control"></label>
-                        <a href="#" class="btn btn-large btn-darkbrown">check</a>
+                        <button type="submit" class="btn btn-large btn-darkbrown">Найти</button>
                     </div>
                 </form>
             </div>
@@ -74,10 +73,10 @@
     </aside>
     <!-- /.md-sidebar -->
     <div class="grid_9 md-primary">
-        <p class="result-available"><span class="text-bold">12</span> rooms available found</p>
+        <p class="result-available"><span class="text-bold">4</span> найдено подходящих размещений</p>
         <section class="row">
             <header class="box-heading">
-                <h3 class="head">LUXURY ROOM <span class="room-available"><span class="text-bold">3</span> rooms available</span>
+                <h3 class="head">Двухместный Люкс <span class="room-available"></span>
                 </h3>
             </header>
             <!-- /.box-heading -->
@@ -90,25 +89,23 @@
                 <!-- /.media -->
                 <div class="col list">
                     <ul class="list-check">
-                        <li>Free LAN and WiFi access</li>
-                        <li>Coffee shop</li>
-                        <li>Concierge</li>
-                        <li>Elevator</li>
+                        <li>Бесплатный WiFi</li>
+                        <li>Телевизор</li>
+                        <li>Бесплатный паркинг</li>
                     </ul>
                 </div>
                 <div class="col list">
                     <ul class="list-check">
-                        <li>Laundry service/dry cleaning</li>
-                        <li>Pets allowed</li>
-                        <li>Poolside bar</li>
-                        <li>Safety deposit boxes</li>
+                        <li>Уборка номера</li>
+                        <li>Бар</li>
+                        <li>Сейф</li>
                     </ul>
                 </div>
                 <div class="col price">
-                    <span class="from">From</span><br>
-                    <span class="number number-big">350$<span class="one-night">/ Night</span></span><br>
+                    <span class="from">От</span><br>
+                    <span class="number number-big">35$<span class="one-night">/ ночь</span></span><br>
 
-                    <p><a href="#" class="btn btn-medium btn-darkbrown">Book now</a></p>
+                    <p><a href="#" class="btn btn-medium btn-darkbrown">Заказать</a></p>
                 </div>
             </div>
         </section>
@@ -142,10 +139,10 @@
                     </ul>
                 </div>
                 <div class="col price">
-                    <span class="from">From</span><br>
-                    <span class="number number-big">120$<span class="one-night">/ Night</span></span><br>
+                    <span class="from">От</span><br>
+                    <span class="number number-big">38$<span class="one-night">/ ночь</span></span><br>
 
-                    <p><a href="#" class="btn btn-medium btn-darkbrown">Book now</a></p>
+                    <p><a href="#" class="btn btn-medium btn-darkbrown">Заказать</a></p>
                 </div>
             </div>
         </section>
@@ -179,10 +176,10 @@
                     </ul>
                 </div>
                 <div class="col price">
-                    <span class="from">From</span><br>
-                    <span class="number number-big">520$<span class="one-night">/ Night</span></span><br>
+                    <span class="from">От</span><br>
+                    <span class="number number-big">52$<span class="one-night">/ ночь</span></span><br>
 
-                    <p><a href="#" class="btn btn-medium btn-darkbrown">Book now</a></p>
+                    <p><a href="#" class="btn btn-medium btn-darkbrown">Заказать</a></p>
                 </div>
             </div>
         </section>
@@ -216,10 +213,10 @@
                     </ul>
                 </div>
                 <div class="col price">
-                    <span class="from">From</span><br>
-                    <span class="number number-big">520$<span class="one-night">/ Night</span></span><br>
+                    <span class="from">От</span><br>
+                    <span class="number number-big">46$<span class="one-night">/ ночь</span></span><br>
 
-                    <p><a href="#" class="btn btn-medium btn-darkbrown">Book now</a></p>
+                    <p><a href="#" class="btn btn-medium btn-darkbrown">Заказать</a></p>
                 </div>
             </div>
         </section>

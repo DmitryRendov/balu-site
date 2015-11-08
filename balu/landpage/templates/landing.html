@@ -68,13 +68,13 @@
                     <section class="md-booking">
                         <div class="box-booking booking-inline clearfix">
                             <form class="form-check-avalability" role="form" action="/accomodation/check-available/" method="post">
-                              {% csrf_token %}
+                                {% csrf_token %}
                                 <div class="form-group">
                                     <label class="label-control">Дата заезда</label>
 
                                     <div class="booking-form select-white">
                                         <label class="collapse input">
-                                            <input type="text" id="arrival-date" class="input-control border-white"/>
+                                            <input type="text" id="arrival-date" name="arrival-date" class="input-control border-white"/>
                                         </label>
                                     </div>
                                 </div>
@@ -83,16 +83,16 @@
 
                                     <div class="booking-form select-white">
                                         <label class="collapse input">
-                                            <input type="text" id="departure-date" class="input-control border-white"/>
+                                            <input type="text" id="departure-date" name="departure-date" class="input-control border-white"/>
                                         </label>
                                     </div>
                                 </div>
                                 <div class="form-group select">
-                                    <label class="label-control">Взрослых</label>
+                                    <label class="label-control">Взрослые</label>
 
                                     <div class="input-group select-white">
                                         <label class="collapse">
-                                            <select id="form-select" class="form-select">
+                                            <select id="form-select" name="adults" class="form-select">
                                                 <option class="option-test">1</option>
                                                 <option>2</option>
                                                 <option>3</option>
@@ -106,7 +106,7 @@
 
                                     <div class="input-group select-white">
                                         <label class="collapse">
-                                            <select class="form-select">
+                                            <select class="form-select" name="kids">
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
@@ -117,7 +117,7 @@
                                 </div>
                                 <div class="form-group last">
                                     <label class="label-control"></label>
-                                    <a href="#" class="btn btn-large btn-darkbrown">Найти</a>
+                                    <button type="submit" class="btn btn-large btn-darkbrown">Найти</button>
                                 </div>
                             </form>
                         </div>
@@ -240,8 +240,12 @@
 <script type="text/javascript">
 	$(function() {
 		"use strict";
-		$("#arrival-date, #departure-date").datepicker({
-		});
+    		$("#arrival-date, #departure-date").datepicker({
+        dateFormat: "dd.m.yy",
+        minDate: 0,
+        showOtherMonths: true,
+        firstDay: 1
+      });
 	});
 </script>
 {% endblock %}
