@@ -1,0 +1,247 @@
+{% extends "base.html" %}
+
+{% block base_content %}
+<!-- Slider with Jquery bxslider -->
+<section class="md-slide-wrapper md-slide-home">
+    <!-- Slide Image-->
+    <ul id="md-slide-fade" class="md-slide clearfix">
+        <li>
+            <img src="/static/img/slide-1.jpg" alt="">
+
+            <div class="content-slide">
+                <div class="home-content">
+                    <h2 class="slide-title">blanditis</h2>
+
+                    <h3 class="slide-title">praesentium</h3>
+
+                    <div class="dots-line">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <p class="slide-description">Vestibulum facilisis eros at mattis aliquam. Aliquam lacinia nulla eget
+                        eros volutpat dictum. Ut venenatis ante mauris, quis vestibulum felis.</p>
+                    <a href="#" class="btn btn-border btn-border-white">узнать больше</a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img src="/static/img/slide-2.jpg" alt="">
+
+            <div class="content-slide">
+                <div class="home-content">
+                    <h2 class="slide-title alter">Aenean Turpis </h2>
+
+                    <h3 class="slide-title alter">Malesuada Quis Ante</h3>
+
+                    <p class="slide-description">Morbi consectetur, sem sit amet mollis fermentum, lectus risus euismod
+                        diam, vitae sollicitudin purus eros vel dolor. .</p>
+                    <a href="#" class="btn btn-border btn-border-white">узнать больше</a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img src="/static/img/slide-3.jpg" alt="">
+
+            <div class="content-slide dark">
+                <div class="home-content">
+                    <h2 class="slide-title">тихо<span class="title-inner">и</span>уютно</h2>
+
+                    <p class="slide-description">Усадьба размещена в спокойном месте в отдалении от шумного
+                        города или проехжей части.</p>
+                    <a href="#" class="btn btn-border btn-border-white">узнать больше</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</section>
+<!-- Slider End -->
+
+<div class="md-body-wrapper">
+    <div class="md-home">
+        <section class="row check-availability">
+            <div class="container clearfix">
+                <div class="grid_3">
+                    <h2 class="title-checkroom">Подобрать размещение</h2>
+                </div>
+                <div class="grid_9">
+                    <section class="md-booking">
+                        <div class="box-booking booking-inline clearfix">
+                            <form class="form-check-avalability" role="form" action="/accomodation/check-available/" method="post">
+                              {% csrf_token %}
+                                <div class="form-group">
+                                    <label class="label-control">Дата заезда</label>
+
+                                    <div class="booking-form select-white">
+                                        <label class="collapse input">
+                                            <input type="text" id="arrival-date" class="input-control border-white"/>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label-control">Дата Отъезда</label>
+
+                                    <div class="booking-form select-white">
+                                        <label class="collapse input">
+                                            <input type="text" id="departure-date" class="input-control border-white"/>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group select">
+                                    <label class="label-control">Взрослых</label>
+
+                                    <div class="input-group select-white">
+                                        <label class="collapse">
+                                            <select id="form-select" class="form-select">
+                                                <option class="option-test">1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group select">
+                                    <label class="label-control">Детей</label>
+
+                                    <div class="input-group select-white">
+                                        <label class="collapse">
+                                            <select class="form-select">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group last">
+                                    <label class="label-control"></label>
+                                    <a href="#" class="btn btn-large btn-darkbrown">Найти</a>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.box-booking -->
+                    </section>
+                    <!-- /.md-booking -->
+                </div>
+            </div>
+            <!-- /.container -->
+        </section>
+        <section class="row md-home-body">
+            <div class="container clearfix">
+                <aside class="grid_3 md-sidebar">
+                    <section class="widget-home-info">
+                        <h3 class="h3 header-sidebar">почему наша Усадьба?</h3>
+
+                        <div class="home-content">
+                            <p>Semper ac dolor vitae accumsan. Cras interdum hendrerit lacinia. Phasellus accumsan urna
+                                vitae molestie interdum. Nam sed placerat libero, non eleifend dolor. </p>
+
+                            <p>Donec ultrices lacinia arcu ut sagittis. Etiam non ante lectus. Mauris egestas, tellus
+                                sed venenatis tincidunt, odio diam iaculis augue, nec tincidunt enim odio id arcu. Ut
+                                pellentesque, quam ut sagittis adipiscing, lectus metus mollis magna.</p>
+                            <ul class="list list-check">
+                                <li>5 комнат</li>
+                                <li>отличные завтраки</li>
+                                <li>потрясающая природа</li>
+                                <li>баня и сайна</li>
+                                <li>бесплатная парковка</li>
+                                <li>бесплатная доставка из аэропорта</li>
+                                <li>24 часа поддержки</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section id="quote-slider" class="widget-quote">
+                        <div class="box-quote">
+                            <p>Semper ac dolor vitae accumsan. Cras interdum hendrerit lacinia. Phasellus accumsan urna
+                                vitae molestie interdum. Nam sed placerat libero, non eleifend dolor magna.</p>
+                            <a href="#" class="text-link link-direct">Дмитрий, VIP гость</a>
+                        </div>
+                        <div class="box-quote">
+                            <p>Lorem ac dolor vitae accumsan. Cras interdum hendrerit lacinia.</p>
+                            <a href="#" class="text-link link-direct">Аня, Совладелец Усадьбы</a>
+                        </div>
+                        <div class="box-quote">
+                            <p>Ipsum ac dolor vitae molestie interdum. Nam sed placerat libero, non eleifend dolor
+                                magna.</p>
+                            <a href="#" class="text-link link-direct">Андрей, Владелец Усадьбы</a>
+                        </div>
+
+                    </section>
+                </aside>
+                <!-- /.md-sidebar -->
+
+                <div class="grid_9 md-primary">
+                    <div class="row row-home">
+                        <article class="media">
+                            <figure class="media-image">
+                                <img src="/static/img/1.jpg" alt="" class="media-object">
+                            </figure>
+                            <section class="media-body">
+                                <h3 class="media-header media-header-big">
+                                    <a href="room-detail.html">Номер Люкс</a>
+                                </h3>
+
+                                <p class="media-content">Mauris egestas, tellus sed venenatis tincidunt, odio diam
+                                    iaculis augue, nec tincidunt enim odio id arcu. Ut pellentesque, quam ut sagittis
+                                    adipiscing, lectus metus mollis magna...<a href="room-detail.html"
+                                                                               class="text-link link-direct">дальше</a></p>
+                            </section>
+                        </article>
+                    </div>
+                    <!-- /.row-article -->
+                    <div class="row row-home">
+                        <article class="media">
+                            <figure class="media-image">
+                                <img src="/static/img/2.jpg" alt="" class="media-object">
+                            </figure>
+                            <section class="media-body">
+                                <h3 class="media-header media-header-big"><a href="room-detail.html">Светлая комната</a>
+                                </h3>
+
+                                <p class="media-content">Nunc at nunc in elit pellentesque dignissim at viverra nisl.
+                                    Nam ac molestie sapien. Quisque posuere nisi non nisi feugiat mattis. Aenean vitae
+                                    nisl a risus pellentesque pellentesque vel vulputate sem... <a
+                                            href="room-detail.html" class="text-link link-direct">дальше</a></p>
+                            </section>
+                        </article>
+                    </div>
+                    <!-- /.row-article -->
+                    <div class="row row-home">
+                        <article class="media">
+                            <figure class="media-image">
+                                <img src="/static/img/3.jpg" alt="" class="media-object">
+                            </figure>
+                            <section class="media-body">
+                                <h3 class="media-header media-header-big"><a href="room-detail.html">Семейный номер</a>
+                                </h3>
+
+                                <p class="media-content">Mauris egestas, tellus sed venenatis tincidunt, odio diam
+                                    iaculis augue, nec tincidunt enim odio id arcu. Ut pellentesque, quam ut sagittis
+                                    adipiscing, lectus metus mollis magna...<a href="room-detail.html"
+                                                                               class="text-link link-direct">дальше</a></p>
+                            </section>
+                        </article>
+                    </div>
+                    <!-- /.row-article -->
+                </div>
+                <!-- /.md-sidebar -->
+            </div>
+        </section>
+        <!-- /.md-home-body -->
+    </div>
+</div>
+
+{% endblock %}
+
+{% block custom_js %}
+<script type="text/javascript" src="/static/js/home.js"></script>
+<script type="text/javascript">
+	$(function() {
+		"use strict";
+		$("#arrival-date, #departure-date").datepicker({
+		});
+	});
+</script>
+{% endblock %}

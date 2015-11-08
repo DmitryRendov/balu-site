@@ -41,6 +41,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'loginsys',
     'lib',	
+    'landpage',
+    'accomodation',
 )
 
 AUTH_USER_MODEL = 'loginsys.User'

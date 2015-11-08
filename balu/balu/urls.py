@@ -20,11 +20,12 @@ from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.flatpages import views
-#import landpage.views
+import landpage.views
 
 
 urlpatterns = [
-    #url(r'^$', landpage.views.index, name='index'),
+    url(r'^$', landpage.views.index, name='index'),
+    url(r'^accomodation/', include('accomodation.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^auth/', include('loginsys.urls')),
     url(r'^lib/', include('lib.urls')),

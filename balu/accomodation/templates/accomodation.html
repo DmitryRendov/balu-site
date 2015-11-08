@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block base_content %}
+		<!-- Body -->
+			<div class="md-body-wrapper">
+				<section class="container">
+					<div class="md-body md-accomodation">
+						<section class="row md-accomodation-available clearfix">
+							<div class="grid_3 align-center">
+								<header class="box-heading heading-large">
+									A
+									<div class="decription-override">
+										<h1 class="h1">Accomodation</h1>
+										<p>rates & reservations</p>
+									</div>
+								</header>
+							</div>
+							<div class="grid_9">
+								<section class="md-booking">
+									<h2 class="title-checkroom">Check availability</h2>
+									<div class="box-booking booking-inline">
+										<form class="form-check-avalability" role="form" action="/accomodation/check-available/" method="post">
+                                       {% csrf_token %}
+											<div class="form-group">
+												<label class="label-control">Arrival Date</label>
+												<div class="booking-form select-black">
+													<label class="collapse input">
+														<input type="text" id="arrival-date" class="input-control border-black"/>
+													</label>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="label-control">Departure Date</label>
+												<div class="booking-form select-black">
+													<label class="collapse input">
+														<input type="text" id="departure-date" class="input-control border-black"/>
+													</label>
+												</div>
+											</div>
+											<div class="form-group select">
+												<label class="label-control">Adults</label>
+												<div class="input-group select-black">
+													<label class="collapse">
+														<select class="form-select">
+															<option>1</option>
+															<option>2</option>
+															<option>3</option>
+															<option>4</option>
+															<option>5</option>
+														</select>
+													</label>
+												</div>
+											</div>
+											<div class="form-group select">
+												<label class="label-control">Children</label>
+												<div class="input-group select-black">
+													<label class="collapse">
+														<select class="form-select">
+															<option>1</option>
+															<option>2</option>
+															<option>3</option>
+															<option>4</option>
+															<option>5</option>
+														</select>
+													</label>
+												</div>
+											</div>
+											<div class="form-group last">
+												<label class="label-control"></label>
+												<a href="#" class="btn btn-large btn-darkbrown">Check</a>
+											</div>
+										</form>
+									</div><!-- /.box-booking -->
+								</section><!-- /.md-booking -->
+							</div>
+						</section>
+
+						<section class="md-accomodation-content">
+							<div class="row clearfix">
+								<div class="grid_4">
+									<article class="media">
+										<figure>
+											<img src="/static/img/accomodation/accomodation-1.jpg" alt="" class="media-object">
+										</figure>
+										<section class="media-body">
+											<h3 class="media-header h4"><a href="room-detail.html">Deluxe Room</a></h3>
+											<p class="media-content">Mauris egestas, tellus sed venenatis tincidunt, odio diam iaculis augue, nec tincidunt enim odio id arcu. Ut pellentesque, quam ut sagittis adipiscing, lectus metus mollis magna... </p>
+											<a class="btn btn-small btn-border btn-border-brown" href="room-detail.html">See Detail</a>
+										</section>
+									</article>
+								</div>
+								<div class="grid_4">
+									<article class="media">
+										<figure>
+											<img src="/static/img/accomodation/accomodation-2.jpg" alt="" class="media-object">
+										</figure>
+										<section class="media-body">
+											<h3 class="media-header h4"><a href="room-detail.html">ELEgant Room</a></h3>
+											<p class="media-content">Nunc at nunc in elit pellentesque dignissim at viverra nisl. Nam ac molestie sapien. Quisque posuere nisi non nisi feugiat mattis. Aenean vitae nisl a risus pellentesque pellentesque vel vulputate sem... </p>
+											<a class="btn btn-small btn-border btn-border-brown" href="room-detail.html">See Detail</a>
+										</section>
+									</article>
+								</div>
+								<div class="grid_4">
+									<article class="media">
+										<figure>
+											<img src="/static/img/accomodation/accomodation-3.jpg" alt="" class="media-object">
+										</figure>
+										<section class="media-body">
+											<h3 class="media-header h4"><a href="room-detail.html">Luxury Room</a></h3>
+											<p class="media-content">Mauris egestas, tellus sed venenatis tincidunt, odio diam iaculis augue, nec tincidunt enim odio id arcu. Ut pellentesque, quam ut sagittis adipiscing, lectus metus mollis magna... </p>
+											<a class="btn btn-small btn-border btn-border-brown" href="room-detail.html">See Detail</a>
+										</section>
+									</article>
+								</div>
+							</div>
+							<div class="row clearfix">
+								<div class="grid_4">
+									<article class="media">
+										<figure>
+											<img src="/static/img/accomodation/accomodation-4.jpg" alt="" class="media-object">
+										</figure>
+										<section class="media-body">
+											<h3 class="media-header h4"><a href="room-detail.html">Suspendisse Room</a></h3>
+											<p class="media-content">Mauris egestas, tellus sed venenatis tincidunt, odio diam iaculis augue, nec tincidunt enim odio id arcu. Ut pellentesque, quam ut sagittis adipiscing, lectus metus mollis magna... </p>
+											<a class="btn btn-small btn-border btn-border-brown" href="room-detail.html">See Detail</a>
+										</section>
+									</article>
+								</div>
+								<div class="grid_4">
+									<article class="media">
+										<figure>
+											<img src="/static/img/accomodation/accomodation-5.jpg" alt="" class="media-object">
+										</figure>
+										<section class="media-body">
+											<h3 class="media-header h4"><a href="room-detail.html">Nunc Room</a></h3>
+											<p class="media-content">Vivamus ac pretium urna. Pellentesque porta commodo urna, a semper nunc rhoncus et. Maecenas odio dolor, consequat vitae metus sodales, viverra gravida urna. Nullam eu placerat ligula... </p>
+											<a class="btn btn-small btn-border btn-border-brown" href="room-detail.html">See Detail</a>
+										</section>
+									</article>
+								</div>
+								<div class="grid_4">
+									<article class="media">
+										<figure>
+											<img src="/static/img/accomodation/accomodation-6.jpg" alt="" class="media-object">
+										</figure>
+										<section class="media-body">
+											<h3 class="media-header h4"><a href="room-detail.html">eleifend Room</a></h3>
+											<p class="media-content">Mauris egestas, tellus sed venenatis tincidunt, odio diam iaculis augue, nec tincidunt enim odio id arcu. Ut pellentesque, quam ut sagittis adipiscing, lectus metus mollis magna... </p>
+											<a class="btn btn-small btn-border btn-border-brown" href="room-detail.html">See Detail</a>
+										</section>
+									</article>
+								</div>
+							</div>
+						</section>
+					</div><!-- /.md-accomodation -->
+				</section><!-- /.md-wrapper  -->
+			</div>
+
+{% endblock %}

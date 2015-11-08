@@ -1,0 +1,245 @@
+{% extends "base.html" %}
+
+{% block base_content %}
+<div class="md-wrapper md-home-body md-check-available">
+<div class="container clearfix">
+    <aside class="grid_3 md-sidebar">
+        <section class="box-sidebar">
+            <h3 class="h3 header-sidebar">Check availability</h3>
+
+            <div class="box-booking booking-stack">
+                <form>
+                    <div class="form-group">
+                        <label class="label-control">Arrival Date</label>
+
+                        <div class="booking-form select-black">
+                            <label class="collapse input">
+                                <input type="text" id="arrival-date" class="input-control border-black"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-control">Departure Date</label>
+
+                        <div class="booking-form select-black">
+                            <label class="collapse input">
+                                <input type="text" id="departure-date" class="input-control border-black"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group row clearfix">
+                        <div class="col-left">
+                            <div class="form-group">
+                                <label class="label-control">Adults</label>
+
+                                <div class="input-group select-black">
+                                    <label class="collapse">
+                                        <select class="form-select">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-right">
+                            <div class="form-group">
+                                <label class="label-control">Children</label>
+
+                                <div class="input-group select-black">
+                                    <label class="collapse">
+                                        <select class="form-select">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-control"></label>
+                        <a href="#" class="btn btn-large btn-darkbrown">check</a>
+                    </div>
+                </form>
+            </div>
+            <!-- /.box-booking -->
+        </section>
+    </aside>
+    <!-- /.md-sidebar -->
+    <div class="grid_9 md-primary">
+        <p class="result-available"><span class="text-bold">12</span> rooms available found</p>
+        <section class="row">
+            <header class="box-heading">
+                <h3 class="head">LUXURY ROOM <span class="room-available"><span class="text-bold">3</span> rooms available</span>
+                </h3>
+            </header>
+            <!-- /.box-heading -->
+            <div class="row-room clearfix">
+                <div class="col media">
+                    <figure>
+                        <img src="/static/img/accomodation/demo1.jpg" alt="" class="media-object medium">
+                    </figure>
+                </div>
+                <!-- /.media -->
+                <div class="col list">
+                    <ul class="list-check">
+                        <li>Free LAN and WiFi access</li>
+                        <li>Coffee shop</li>
+                        <li>Concierge</li>
+                        <li>Elevator</li>
+                    </ul>
+                </div>
+                <div class="col list">
+                    <ul class="list-check">
+                        <li>Laundry service/dry cleaning</li>
+                        <li>Pets allowed</li>
+                        <li>Poolside bar</li>
+                        <li>Safety deposit boxes</li>
+                    </ul>
+                </div>
+                <div class="col price">
+                    <span class="from">From</span><br>
+                    <span class="number number-big">350$<span class="one-night">/ Night</span></span><br>
+
+                    <p><a href="#" class="btn btn-medium btn-darkbrown">Book now</a></p>
+                </div>
+            </div>
+        </section>
+        <section class="row">
+            <header class="box-heading">
+                <h3 class="head">Deluxe ROOM<span class="room-available"><span class="text-bold">3</span> rooms available</span>
+                </h3>
+            </header>
+            <!-- /.box-heading -->
+            <div class="row-room clearfix">
+                <div class="col media">
+                    <figure>
+                        <img src="/static/img/accomodation/demo2.jpg" alt="" class="media-object medium">
+                    </figure>
+                </div>
+                <!-- /.media -->
+                <div class="col list">
+                    <ul class="list-check">
+                        <li>Free LAN and WiFi access</li>
+                        <li>Coffee shop</li>
+                        <li>Concierge</li>
+                        <li>Elevator</li>
+                    </ul>
+                </div>
+                <div class="col list">
+                    <ul class="list-check">
+                        <li>Laundry service/dry cleaning</li>
+                        <li>Pets allowed</li>
+                        <li>Poolside bar</li>
+                        <li>Safety deposit boxes</li>
+                    </ul>
+                </div>
+                <div class="col price">
+                    <span class="from">From</span><br>
+                    <span class="number number-big">120$<span class="one-night">/ Night</span></span><br>
+
+                    <p><a href="#" class="btn btn-medium btn-darkbrown">Book now</a></p>
+                </div>
+            </div>
+        </section>
+        <section class="row">
+            <header class="box-heading">
+                <h3 class="head">Elegant ROOM <span class="room-available"><span class="text-bold">3</span> rooms available</span>
+                </h3>
+            </header>
+            <!-- /.box-heading -->
+            <div class="row-room clearfix">
+                <div class="col media">
+                    <figure>
+                        <img src="/static/img/accomodation/demo3.jpg" alt="" class="media-object medium">
+                    </figure>
+                </div>
+                <!-- /.media -->
+                <div class="col list">
+                    <ul class="list-check">
+                        <li>Free LAN and WiFi access</li>
+                        <li>Coffee shop</li>
+                        <li>Concierge</li>
+                        <li>Elevator</li>
+                    </ul>
+                </div>
+                <div class="col list">
+                    <ul class="list-check">
+                        <li>Laundry service/dry cleaning</li>
+                        <li>Pets allowed</li>
+                        <li>Poolside bar</li>
+                        <li>Safety deposit boxes</li>
+                    </ul>
+                </div>
+                <div class="col price">
+                    <span class="from">From</span><br>
+                    <span class="number number-big">520$<span class="one-night">/ Night</span></span><br>
+
+                    <p><a href="#" class="btn btn-medium btn-darkbrown">Book now</a></p>
+                </div>
+            </div>
+        </section>
+        <section class="row">
+            <header class="box-heading">
+                <h3 class="head">Superior ROOM <span class="room-available"><span class="text-bold">3</span> rooms available</span>
+                </h3>
+            </header>
+            <!-- /.box-heading -->
+            <div class="row-room clearfix">
+                <div class="col media">
+                    <figure>
+                        <img src="/static/img/accomodation/demo4.jpg" alt="" class="media-object medium">
+                    </figure>
+                </div>
+                <!-- /.media -->
+                <div class="col list">
+                    <ul class="list-check">
+                        <li>Free LAN and WiFi access</li>
+                        <li>Coffee shop</li>
+                        <li>Concierge</li>
+                        <li>Elevator</li>
+                    </ul>
+                </div>
+                <div class="col list">
+                    <ul class="list-check">
+                        <li>Laundry service/dry cleaning</li>
+                        <li>Pets allowed</li>
+                        <li>Poolside bar</li>
+                        <li>Safety deposit boxes</li>
+                    </ul>
+                </div>
+                <div class="col price">
+                    <span class="from">From</span><br>
+                    <span class="number number-big">520$<span class="one-night">/ Night</span></span><br>
+
+                    <p><a href="#" class="btn btn-medium btn-darkbrown">Book now</a></p>
+                </div>
+            </div>
+        </section>
+        <!-- /.row -->
+    </div>
+    <!-- /.md-primary -->
+</div>
+<!-- /.container -->
+</div><!-- /.md-wrapper  -->
+{% endblock %}
+
+{% block custom_js %}
+<script type="text/javascript">
+    $(function () {
+        "use strict";
+        $("#arrival-date, #departure-date").datepicker({
+            // showOn: "button",
+            // buttonImage: "images/calendar.gif",
+            // buttonImageOnly: true
+        });
+    });
+</script>
+{% endblock %}
