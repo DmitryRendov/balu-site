@@ -26,6 +26,7 @@ import landpage.views
 urlpatterns = [
     url(r'^$', landpage.views.index, name='index'),
     url(r'^accomodation/', include('accomodation.urls')),
+    url(r'^admin_tools/', include('admin_tools.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^auth/', include('loginsys.urls')),
     url(r'^lib/', include('lib.urls')),
