@@ -58,6 +58,8 @@ python-bin/
 
 # django admin
 /balu/static/admin/
+/balu/static/admin_tools/
+/balu/static/debug_toolbar/
 
 # Logs
 logs
