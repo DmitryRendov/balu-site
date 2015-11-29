@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'lib',	
     'landpage',
     'accomodation',
+    'album',
 )
 
 AUTH_USER_MODEL = 'loginsys.User'
@@ -130,5 +131,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
 INTERNAL_IPS=['192.168.100.2','192.168.100.8','192.168.1.8']
