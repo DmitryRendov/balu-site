@@ -1,19 +1,33 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Room, VirtualRoom
+from .models import RealRoom, VirtualRoom
 
-class RoomAdmin(admin.ModelAdmin):
+class RealRoomAdmin(admin.ModelAdmin):
     list_filter = ('name', 'is_available')
-    fields = ('name', 'description', ('real_size', 'square'), ('is_lux', 'is_available'))
-    list_display = ('name', 'real_size', 'is_available')
+    list_display = ('name', 'real_size', 'square', 'is_available')
+
+    fieldsets = [
+        (None, {'fields': ['name', 'description']}),
+        ('Room size', {'fields': ['real_size', 'square']}),
+        ('Charachteristics', {'fields': ['is_lux', 'is_available']}),
+    ]
 
     class Meta:
-        model = Room
+        model = RealRoom
 
-admin.site.register(Room, RoomAdmin)
+admin.site.register(RealRoom, RealRoomAdmin)
 
 class VirtualRoomAdmin(admin.ModelAdmin):
+
+    list_filter = ('name', 'kids_allowed')
+    list_display = ('name', 'virt_size', 'kids_allowed', 'square')
+
+    fieldsets = [
+        (None, {'fields': ['name', 'description']}),
+        ('Real room', {'fields': ['real_room']}),
+        ('Room size', {'fields': ['virt_size', 'kids_allowed', 'square']}),
+    ]
 
     class Meta:
         model = VirtualRoom
