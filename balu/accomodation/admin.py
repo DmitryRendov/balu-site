@@ -9,6 +9,7 @@ class RealRoomAdmin(admin.ModelAdmin):
 
     fieldsets = [
         (None, {'fields': ['name', 'description']}),
+        ('Gallery', {'fields': ['album']}),
         ('Room size', {'fields': ['real_size', 'square']}),
         ('Charachteristics', {'fields': ['is_lux', 'is_available']}),
     ]
@@ -25,6 +26,7 @@ class VirtualRoomAdmin(admin.ModelAdmin):
 
     fieldsets = [
         (None, {'fields': ['name', 'description']}),
+        ('Gallery', {'fields': ['album']}),
         ('Real room', {'fields': ['real_room']}),
         ('Room size', {'fields': ['virt_size', 'kids_allowed', 'square']}),
     ]

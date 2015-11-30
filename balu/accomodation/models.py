@@ -4,6 +4,7 @@ import uuid
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.core import validators
+from album.models import Album, Image, Tag
 
 ## Only for debug
 import logging
@@ -30,6 +31,7 @@ class Room(models.Model):
     real_size = models.CharField(_('real or maximal size'),max_length=1, choices=ROOM_SIZES)
     square = models.DecimalField(_('room square'), max_digits=4, decimal_places=2, default="0")
     REQUIRED_FIELDS = ['name', 'real_size', 'square']
+    album = models.ManyToManyField(Album, blank=True)
 
     class Meta:
 		abstract = True

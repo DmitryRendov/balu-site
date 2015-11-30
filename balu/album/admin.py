@@ -4,6 +4,10 @@ from django.contrib import admin
 from .models import Album, Image, Tag
 
 class AlbumAdmin(admin.ModelAdmin):
+    """
+       Manage Albums
+       To-Do: Add managing photos from admin section
+    """
     search_fields = ["title"]
     list_display = ["title"]
 
@@ -11,9 +15,15 @@ class TagAdmin(admin.ModelAdmin):
     list_display = ["tag"]
 
 class ImageAdmin(admin.ModelAdmin):
-    # search_fields = ["title"]
-    list_display = ["__unicode__", "title", "user", "size", "tags_", "albums_", "thumbnail", "created"]
+    """
+       Admin section for Image class
+    """
+    list_display = ["__unicode__", "title", "user", "size", "thumbnail", "tags_", "albums_"]
     list_filter = ["tags", "albums", "user"]
+    fieldsets = [
+        (None, {'fields': ['image', 'title', 'user']}),
+        ('Albums and tags', {'fields': ['tags', 'albums']})
+    ]
 
     def save_model(self, request, obj, form, change):
         obj.user = request.user

@@ -53,9 +53,6 @@ class Image(models.Model):
         """Image size."""
         return "%s x %s" % (self.width, self.height)
 
-    def __unicode__(self):
-        return self.image.name
-
     def tags_(self):
         lst = [x[1] for x in self.tags.values_list()]
         return str(join(lst, ', '))
