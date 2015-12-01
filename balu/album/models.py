@@ -8,13 +8,21 @@ from django.conf import settings
 from django.core.files import File
 from os.path import join as pjoin
 from tempfile import *
+from django.utils.translation import ugettext_lazy as _
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 class Album(models.Model):
-    title = models.CharField(max_length=60)
-    public = models.BooleanField(default=False)
+    title = models.CharField(_('Album name'), max_length=60)
+    public = models.BooleanField(_('Is it public?'), default=False)
+    description = models.CharField(_('Album description'), max_length=255, blank=True, null=True)
+
+    class Meta:
+        db_table = 'albums'
+        verbose_name = _('album')
+        verbose_name_plural = _('albums')
+        ordering = ['title']
 
     def __unicode__(self):
         return self.title
@@ -29,6 +37,12 @@ class Album(models.Model):
 
 class Tag(models.Model):
     tag = models.CharField(max_length=50)
+
+    class Meta:
+        db_table = 'tags'
+        verbose_name = _('tags')
+        verbose_name_plural = _('tags')
+        ordering = ['tag']
 
     def __unicode__(self):
         return self.tag
@@ -45,6 +59,12 @@ class Image(models.Model):
     user = models.ForeignKey(User, null=True, blank=True)
     thumb128 = models.ImageField(upload_to="images/", blank=True, null=True)
     thumb64 = models.ImageField(upload_to="images/", blank=True, null=True)
+
+    class Meta:
+        db_table = 'images'
+        verbose_name = _('image')
+        verbose_name_plural = _('images')
+        ordering = ['title']
 
     def __unicode__(self):
         return self.image.name
