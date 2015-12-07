@@ -1,10 +1,15 @@
 import re
 import uuid
+from string import join
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.core import validators
 from album.models import Album, Image, Tag
+from tinymce.models import HTMLField
+from tinymce.widgets import TinyMCE
+
+
 
 ## Only for debug
 import logging
@@ -27,7 +32,8 @@ class Room(models.Model):
         ('4', 'Four persons room'),
     )
     name = models.CharField(_('room name'), max_length=255, blank=True, null=True)
-    description = models.TextField(_('room description'), max_length=2048, blank=True, null=True)
+    description = HTMLField(_('room description'), max_length=2048, blank=True, null=True)
+    #description = models.TextField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}), max_length=2048, blank=True, null=True)
     real_size = models.CharField(_('real or maximal size'),max_length=1, choices=ROOM_SIZES)
     square = models.DecimalField(_('room square'), max_digits=4, decimal_places=2, default="0")
     REQUIRED_FIELDS = ['name', 'real_size', 'square']
@@ -84,8 +90,12 @@ class VirtualRoom(Room):
         ('1111', '4 - Four single bed room'),
         ('22', '4 - Two double bed room'),
     )
-    real_room = models.ForeignKey(RealRoom)
+    real_room = models.ForeignKey(RealRoom,
+                                   help_text=_('Real room connected to this virtual room'))
     virt_size = models.CharField(_('Virtual room size'), max_length=4, choices=VIRTUAL_ROOM_SIZES)
+    featured = models.BooleanField(_('featured'), default=False,
+                                   help_text=_('To show this room on main page'))
+
     kids_allowed = models.SmallIntegerField(_('How many kids are allowed to be as a guest'), default="2")
     last_login = models.DateTimeField(_('last login'), blank=True, null=True)
 
@@ -104,4 +114,7 @@ class VirtualRoom(Room):
 
     def get_short_name(self):
         return self.real_room.name
+
+    def is_available_(self):
+        return bool(self.real_room.is_available)
 

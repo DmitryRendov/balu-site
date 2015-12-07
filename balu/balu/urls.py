@@ -30,5 +30,6 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^auth/', include('loginsys.urls')),
     url(r'^lib/', include('lib.urls')),
+    url(r'^tinymce/', include('tinymce.urls')),
     url(r'^(?P<url>.*/)$', views.flatpage),
 ]

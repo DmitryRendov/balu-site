@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.flatpages',
     'debug_toolbar',
+    'tinymce',
     'loginsys',
     'lib',	
     'landpage',

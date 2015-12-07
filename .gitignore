@@ -27,6 +27,7 @@ var/
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
+Thumbs.db
 
 # Installer logs
 pip-log.txt
@@ -80,3 +81,6 @@ pids
 temp
 migrations/
 media/
+django_tinymce/
+tiny_mce/
+assets/

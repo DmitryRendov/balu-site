@@ -11,7 +11,7 @@ class RealRoomAdmin(admin.ModelAdmin):
         (None, {'fields': ['name', 'description']}),
         ('Gallery', {'fields': ['album']}),
         ('Room size', {'fields': ['real_size', 'square']}),
-        ('Charachteristics', {'fields': ['is_lux', 'is_available']}),
+        ('Options', {'fields': ['is_lux', 'is_available']}),
     ]
 
     class Meta:
@@ -22,11 +22,12 @@ admin.site.register(RealRoom, RealRoomAdmin)
 class VirtualRoomAdmin(admin.ModelAdmin):
 
     list_filter = ('name', 'kids_allowed')
-    list_display = ('name', 'virt_size', 'kids_allowed', 'square')
+    list_display = ('name', 'get_short_name', 'virt_size', 'kids_allowed', 'square', 'featured', 'is_available_')
 
     fieldsets = [
         (None, {'fields': ['name', 'description']}),
         ('Gallery', {'fields': ['album']}),
+        ('Options', {'fields': ['featured']}),
         ('Real room', {'fields': ['real_room']}),
         ('Room size', {'fields': ['virt_size', 'kids_allowed', 'square']}),
     ]

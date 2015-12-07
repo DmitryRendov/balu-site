@@ -19,11 +19,11 @@ class ImageAdmin(admin.ModelAdmin):
     '''
        Admin section for Image class
     '''
-    list_display = ['__unicode__', 'title', 'user', 'size', 'thumbnail', 'tags_', 'albums_']
+    list_display = ['__unicode__', 'title', 'user', 'size', 'thumbnail', 'tags_', 'albums_', 'is_poster']
     list_filter = ['tags', 'albums', 'user']
     fieldsets = [
         (None, {'fields': ['image', 'title', 'user']}),
-        ('Albums and tags', {'fields': ['tags', 'albums']})
+        ('Albums and tags', {'fields': ['tags', 'albums', 'is_poster']})
     ]
 
     def save_model(self, request, obj, form, change):

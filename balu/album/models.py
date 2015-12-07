@@ -9,6 +9,7 @@ from django.core.files import File
 from os.path import join as pjoin
 from tempfile import *
 from django.utils.translation import ugettext_lazy as _
+from tinymce.models import HTMLField
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -16,7 +17,7 @@ sys.setdefaultencoding('utf-8')
 class Album(models.Model):
     title = models.CharField(_('Album name'), max_length=60)
     public = models.BooleanField(_('Is it public?'), default=False)
-    description = models.CharField(_('Album description'), max_length=255, blank=True, null=True)
+    description = HTMLField(_('Album description'), max_length=2048, blank=True, null=True)
 
     class Meta:
         db_table = 'albums'
@@ -57,6 +58,8 @@ class Image(models.Model):
     width = models.IntegerField(blank=True, null=True)
     height = models.IntegerField(blank=True, null=True)
     user = models.ForeignKey(User, null=True, blank=True)
+    is_poster = models.BooleanField(_('poster'), default=False,
+                                   help_text=_('It is a poster for the whole album?'))
     thumb128 = models.ImageField(upload_to="images/", blank=True, null=True)
     thumb64 = models.ImageField(upload_to="images/", blank=True, null=True)
 

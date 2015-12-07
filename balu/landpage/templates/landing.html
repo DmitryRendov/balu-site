@@ -6,13 +6,13 @@
     <!-- Slide Image-->
     <ul id="md-slide-fade" class="md-slide clearfix">
         <li>
-            <img src="/static/img/slide-1.jpg" alt="">
+            <img src="/static/img/slide-4.jpg" alt="">
 
             <div class="content-slide">
                 <div class="home-content">
-                    <h2 class="slide-title">blanditis</h2>
+                    <h2 class="slide-title">светло</h2>
 
-                    <h3 class="slide-title">praesentium</h3>
+                    <h3 class="slide-title">уютно</h3>
 
                     <div class="dots-line">
                         <span></span>
@@ -26,13 +26,13 @@
             </div>
         </li>
         <li>
-            <img src="/static/img/slide-2.jpg" alt="">
+            <img src="/static/img/slide-8.jpg" alt="">
 
             <div class="content-slide">
                 <div class="home-content">
-                    <h2 class="slide-title alter">Aenean Turpis </h2>
+                    <h2 class="slide-title alter">Свежий Воздух </h2>
 
-                    <h3 class="slide-title alter">Malesuada Quis Ante</h3>
+                    <h3 class="slide-title alter">Звездное небо</h3>
 
                     <p class="slide-description">Morbi consectetur, sem sit amet mollis fermentum, lectus risus euismod
                         diam, vitae sollicitudin purus eros vel dolor. .</p>
@@ -41,7 +41,7 @@
             </div>
         </li>
         <li>
-            <img src="/static/img/slide-3.jpg" alt="">
+            <img src="/static/img/slide-7.jpg" alt="">
 
             <div class="content-slide dark">
                 <div class="home-content">
@@ -173,58 +173,28 @@
                 <!-- /.md-sidebar -->
 
                 <div class="grid_9 md-primary">
-                    <div class="row row-home">
-                        <article class="media">
-                            <figure class="media-image">
-                                <img src="/static/img/1.jpg" alt="" class="media-object">
-                            </figure>
-                            <section class="media-body">
-                                <h3 class="media-header media-header-big">
-                                    <a href="room-detail.html">Номер Люкс</a>
-                                </h3>
 
-                                <p class="media-content">Mauris egestas, tellus sed venenatis tincidunt, odio diam
-                                    iaculis augue, nec tincidunt enim odio id arcu. Ut pellentesque, quam ut sagittis
-                                    adipiscing, lectus metus mollis magna...<a href="room-detail.html"
-                                                                               class="text-link link-direct">дальше</a></p>
-                            </section>
-                        </article>
-                    </div>
-                    <!-- /.row-article -->
-                    <div class="row row-home">
-                        <article class="media">
-                            <figure class="media-image">
-                                <img src="/static/img/2.jpg" alt="" class="media-object">
-                            </figure>
-                            <section class="media-body">
-                                <h3 class="media-header media-header-big"><a href="room-detail.html">Светлая комната</a>
-                                </h3>
+                    {% for room in favrooms %}
+                        <div class="row row-home">
+                            <article class="media">
+                                <figure class="media-image">
+                                    <img src="/static/img/room04.jpg" alt="" class="media-object">
+                                </figure>
+                                <section class="media-body">
+                                    <h3 class="media-header media-header-big">
+                                        <a href="room-detail.html">{{ room.name }}</a>
+                                    </h3>
 
-                                <p class="media-content">Nunc at nunc in elit pellentesque dignissim at viverra nisl.
-                                    Nam ac molestie sapien. Quisque posuere nisi non nisi feugiat mattis. Aenean vitae
-                                    nisl a risus pellentesque pellentesque vel vulputate sem... <a
-                                            href="room-detail.html" class="text-link link-direct">дальше</a></p>
-                            </section>
-                        </article>
-                    </div>
-                    <!-- /.row-article -->
-                    <div class="row row-home">
-                        <article class="media">
-                            <figure class="media-image">
-                                <img src="/static/img/3.jpg" alt="" class="media-object">
-                            </figure>
-                            <section class="media-body">
-                                <h3 class="media-header media-header-big"><a href="room-detail.html">Семейный номер</a>
-                                </h3>
+                                    <p class="media-content">{{ room.description | safe }}...<a href="room-detail.html"
+                                                                                   class="text-link link-direct">подробнее</a></p>
+                                </section>
+                            </article>
+                        </div>
+                        <!-- /.row-article -->
+                    {% empty %}
+                        <h3>Нет доступных комнат!</h3>
+                    {% endfor %}
 
-                                <p class="media-content">Mauris egestas, tellus sed venenatis tincidunt, odio diam
-                                    iaculis augue, nec tincidunt enim odio id arcu. Ut pellentesque, quam ut sagittis
-                                    adipiscing, lectus metus mollis magna...<a href="room-detail.html"
-                                                                               class="text-link link-direct">дальше</a></p>
-                            </section>
-                        </article>
-                    </div>
-                    <!-- /.row-article -->
                 </div>
                 <!-- /.md-sidebar -->
             </div>
