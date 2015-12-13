@@ -1,12 +1,20 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django import forms
 from django.utils.translation import ugettext, ugettext_lazy as _
 from django.core.context_processors import csrf
+from .models import VirtualRoom
 
 def accomodation(request):
     return render_to_response("accomodation.html",
                               context_instance=RequestContext(request))
+
+
+def room_details(request, slug):
+    return render_to_response("room_details.html", {
+        'room': get_object_or_404(VirtualRoom, slug=slug)
+    },context_instance=RequestContext(request))
+
 
 def checkavailable(request):
     args = {}

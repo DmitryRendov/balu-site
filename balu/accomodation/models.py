@@ -8,14 +8,13 @@ from django.core import validators
 from album.models import Album, Image, Tag
 from tinymce.models import HTMLField
 from tinymce.widgets import TinyMCE
-
+from django.core.urlresolvers import reverse
 
 
 ## Only for debug
 import logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 # end of debug
-
 
 	
 # Create your models here.
@@ -90,6 +89,7 @@ class VirtualRoom(Room):
         ('1111', '4 - Four single bed room'),
         ('22', '4 - Two double bed room'),
     )
+    slug = models.SlugField(max_length=100, db_index=True)
     real_room = models.ForeignKey(RealRoom,
                                    help_text=_('Real room connected to this virtual room'))
     virt_size = models.CharField(_('Virtual room size'), max_length=4, choices=VIRTUAL_ROOM_SIZES)
@@ -118,3 +118,5 @@ class VirtualRoom(Room):
     def is_available_(self):
         return bool(self.real_room.is_available)
 
+    def get_absolute_url(self):
+        return reverse('room_details', args=(self.slug,))

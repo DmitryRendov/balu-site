@@ -7,6 +7,7 @@ from album.models import Image
 def index(request):
     try:
         favrooms = VirtualRoom.objects.filter(featured=True)
+
     except VirtualRoom.DoesNotExist:
         raise Http404("Poll does not exist")
     return render_to_response('landing.html', locals(), context_instance=RequestContext(request))

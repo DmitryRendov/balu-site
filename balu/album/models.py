@@ -33,6 +33,11 @@ class Album(models.Model):
         lst = ["<a href='/media/%s'>%s</a>" % (x, x.split('/')[-1]) for x in lst]
         return join(lst, ', ')
 
+    def get_poster(self):
+        posters = [x for x in self.image_set.all() if not x.is_poster]
+        posters_lst = ["<img class='media-object' src='/media/%s' alt='%s'>" % (x.image, x.title) for x in posters]
+        return join(posters_lst, '')
+
     images.allow_tags = True
 
 

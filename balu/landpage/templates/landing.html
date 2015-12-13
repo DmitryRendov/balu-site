@@ -178,7 +178,11 @@
                         <div class="row row-home">
                             <article class="media">
                                 <figure class="media-image">
-                                    <img src="/static/img/room04.jpg" alt="" class="media-object">
+                                    {% for album in room.album.all %}
+                                        {{ album.get_poster | safe }}
+                                    {% empty %}
+                                        No album associated!
+                                    {% endfor %}
                                 </figure>
                                 <section class="media-body">
                                     <h3 class="media-header media-header-big">

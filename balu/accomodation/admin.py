@@ -23,9 +23,10 @@ class VirtualRoomAdmin(admin.ModelAdmin):
 
     list_filter = ('name', 'kids_allowed')
     list_display = ('name', 'get_short_name', 'virt_size', 'kids_allowed', 'square', 'featured', 'is_available_')
+    prepopulated_fields = {'slug': ('name',)}
 
     fieldsets = [
-        (None, {'fields': ['name', 'description']}),
+        (None, {'fields': ['name', 'slug', 'description']}),
         ('Gallery', {'fields': ['album']}),
         ('Options', {'fields': ['featured']}),
         ('Real room', {'fields': ['real_room']}),

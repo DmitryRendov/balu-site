@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+
+{% block base_content %}
+    <div class="container">
+				<div class="md-body md-room-detail clearfix">
+					<div class="grid_9 md-main">
+						<section class="heading-absolute box-sidebar align-center">
+							<header class="box-heading heading-large">
+								D
+								<div class="decription-override">
+									<h2 class="h1">{{ room.name }}</h2>
+									<p>Номер для Вас!</p>
+								</div>
+							</header>
+						</section>
+						<div class="row">
+							<!--  Slide Preview Room -->
+							<div class="row slide-preview-room">
+								<div id="sliderBig">
+									<ul>
+										<li class="slideshow-photo"><img src="/media/images/room02.jpg" alt=""></li>
+										<li class="slideshow-photo"><img src="/media/images/room03.jpg" alt=""></li>
+										<li class="slideshow-photo"><img src="/media/images/room05.jpg" alt=""></li>
+										<li class="slideshow-photo"><img src="/media/images/room07.jpg" alt=""></li>
+									</ul>
+								</div>
+								<div id="sliderThumb">
+									<ul>
+										<li slideIndex="0"><a href="#"><img src="/media/images/room02-thumb2.jpg" alt=""></a></li>
+										<li slideIndex="1"><a href="#"><img src="/media/images/room03-thumb2.jpg" alt=""></a></li>
+										<li slideIndex="2"><a href="#"><img src="/media/images/room05-thumb2.jpg" alt=""></a></li>
+										<li slideIndex="3"><a href="#"><img src="/media/images/room07-thumb2.jpg" alt=""></a></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="preview-content">
+								{{ room.description | safe }}
+							</div>
+
+							<!-- Md booking -->
+							<section class="md-booking">
+								<h3 class="h3">Book Deluxe room only from <span class="number number-big">120$<span class="one-night">/ Night</span></span></h3>
+								<div class="box-booking booking-inline">
+									<form>
+										<div class="form-group">
+											<label class="label-control">Arrival Date</label>
+											<div class="booking-form select-black">
+												<label class="collapse input">
+													<input type="text" id="arrival-date" class="input-control border-black"/>
+												</label>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="label-control">Departure Date</label>
+											<div class="booking-form select-black">
+												<label class="collapse input">
+													<input type="text" id="departure-date" class="input-control border-black"/>
+												</label>
+											</div>
+										</div>
+										<div class="form-group select">
+											<label class="label-control">Adults</label>
+											<div class="input-group select-black">
+												<label class="collapse">
+													<select class="form-select">
+														<option>1</option>
+														<option>2</option>
+														<option>3</option>
+														<option>4</option>
+														<option>5</option>
+													</select>
+												</label>
+											</div>
+										</div>
+										<div class="form-group select">
+											<label class="label-control">Children</label>
+											<div class="input-group select-black">
+												<label class="collapse">
+													<select class="form-select">
+														<option>1</option>
+														<option>2</option>
+														<option>3</option>
+														<option>4</option>
+														<option>5</option>
+													</select>
+												</label>
+											</div>
+										</div>
+										<div class="form-group last">
+											<label class="label-control"></label>
+											<a href="#" class="btn btn-large btn-darkbrown">Book now</a>
+										</div>
+									</form>
+								</div><!-- /.box-booking -->
+							</section>
+						</div>
+					</div><!-- /.md-main -->
+					<aside class="grid_3 md-sidebar md-sidebar-pt">
+						<section class="box-sidebar">
+							<h2 class="h3 header-sidebar">Room Facilities</h2>
+							<ul class="list list-check">
+								<li>Free LAN and WiFi access</li>
+								<li>Coffee shop </li>
+								<li>Concierge</li>
+								<li>Elevator</li>
+								<li>Executive floor</li>
+								<li>Family room</li>
+								<li>Laundry service/dry cleaning</li>
+								<li>Pets allowed</li>
+								<li>Poolside bar</li>
+								<li>Safety deposit boxes</li>
+								<li>Salon</li>
+								<li>Shuttle service</li>
+								<li>Smoking area</li>
+								<li>Tours</li>
+								<li>Wi-Fi in public areas</li>
+							</ul>
+						</section>
+					</aside><!-- /.md-sidebar -->
+				</div><!-- /.md-testimonail -->
+			</div><!-- /.md-wrapper  -->
+
+{% endblock %}
+
+{% block custom_js %}
+<script type="text/javascript">
+
+(function($){
+	$(document).ready(function($){
+		"use strict"
+		sliderHandler();
+	});
+
+	function sliderHandler(){
+		if($('#sliderBig').length > 0){
+			var sliderBig = $('#sliderBig ul').bxSlider({
+				auto: true,
+				mode: 'fade',
+				speed: 200,
+				pager: false,
+				controls: true,
+				responsive: true,
+				nextText: '<i class="fa fa-angle-right"></i>',
+				prevText: '<i class="fa fa-angle-left"></i>',
+				adaptiveHeight: true,
+				infiniteLoop:false,
+				hideControlOnEnd: true,
+				onSlideBefore: function($slideElement, oldIndex, newIndex){
+					changeThumb(sliderThumb,newIndex);
+				}
+			});
+
+			var sliderThumb = $('#sliderThumb ul').bxSlider({
+				minSlides: 4,
+				maxSlides: 4,
+				slideWidth: 156,
+				slideMargin: 12,
+				moveSlides: 1,
+				pager:false,
+				speed:1000,
+				infiniteLoop:false,
+				hideControlOnEnd:true,
+				controls: false,
+				onSlideBefore:function($slideElement, oldIndex, newIndex){}
+			});
+
+
+			linkRealSliders(sliderBig,sliderThumb);
+
+			// if($('#sliderThumb li').length < 5) {
+			// 	$('#sliderThumb .bx-next').hide();
+			// }
+		}
+	}
+
+	function linkRealSliders(bigS,thumbS){
+		$("#sliderThumb ul").on("click","a",function(event){
+			event.preventDefault();
+			var newIndex = $(this).parent().attr("slideIndex");
+	        bigS.goToSlide(newIndex);
+
+		});
+	}
+
+	function changeThumb(slider,newIndex){
+		var $thumbS=$("#sliderThumb");
+		$thumbS.find('.active').removeClass("active");
+		$thumbS.find('li[slideIndex="'+newIndex+'"]').addClass("active");
+
+		if(slider.getSlideCount()-newIndex>=4){
+			slider.goToSlide(newIndex);
+		}else {
+			slider.goToSlide(slider.getSlideCount()-4);
+		}
+	}
+
+})(jQuery);
+
+
+
+	$(function() {
+		"use strict";
+		$("#arrival-date, #departure-date").datepicker({});
+	});
+</script>
+{% endblock %}
