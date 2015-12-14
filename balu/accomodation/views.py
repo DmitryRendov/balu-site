@@ -6,7 +6,9 @@ from django.core.context_processors import csrf
 from .models import VirtualRoom
 
 def accomodation(request):
+    rooms = VirtualRoom.objects.all() 
     return render_to_response("accomodation.html",
+                              locals(),
                               context_instance=RequestContext(request))
 
 

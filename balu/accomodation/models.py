@@ -119,4 +119,4 @@ class VirtualRoom(Room):
         return bool(self.real_room.is_available)
 
     def get_absolute_url(self):
-        return reverse('room_details', args=(self.slug,))
+        return reverse('accomodation.views.room_details', args=(self.slug,))
