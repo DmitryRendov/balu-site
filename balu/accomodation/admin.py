@@ -26,7 +26,7 @@ class VirtualRoomAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
 
     fieldsets = [
-        (None, {'fields': ['name', 'slug', 'description']}),
+        (None, {'fields': ['name', 'slug', 'short_descr', 'description']}),
         ('Gallery', {'fields': ['album']}),
         ('Options', {'fields': ['featured']}),
         ('Real room', {'fields': ['real_room']}),

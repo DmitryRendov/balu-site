@@ -31,8 +31,8 @@ class Room(models.Model):
         ('4', 'Four persons room'),
     )
     name = models.CharField(_('room name'), max_length=255, blank=True, null=True)
-    description = HTMLField(_('room description'), max_length=2048, blank=True, null=True)
-    #description = models.TextField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}), max_length=2048, blank=True, null=True)
+    short_descr = models.CharField(_('short description'), max_length=150, blank=True, null=True)
+    description = HTMLField(_('full description'), max_length=2048, blank=True, null=True)
     real_size = models.CharField(_('real or maximal size'),max_length=1, choices=ROOM_SIZES)
     square = models.DecimalField(_('room square'), max_digits=4, decimal_places=2, default="0")
     REQUIRED_FIELDS = ['name', 'real_size', 'square']
