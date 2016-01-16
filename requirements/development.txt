@@ -4,4 +4,5 @@
 django-debug-toolbar
 django-admin-tools
 django-tinymce
+django-widget-tweaks
 # django-russian-admin
