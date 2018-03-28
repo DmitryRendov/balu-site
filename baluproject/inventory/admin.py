@@ -6,13 +6,13 @@ from inventory_item import InventoryItem
 
 class InventoryAdmin(DjangoMpttAdmin):
     list_display = ('name', 'parent', 'description', 'thumb', 'created', 'modified')
+    list_filter = ('created', 'modified',)
     fieldsets = [
         (None,             {'fields': ['name', 'parent']}),
         ('Описание',       {'fields': ['description']}),
-        ('Атрибуты',       {'fields': ['global_attrs', 'local_attrs']}),
+        ('Атрибуты',       {'fields': ['attrs']}),
         ('Картинка-логотип класса', {'fields': ['thumb']}),
     ]
-    list_filter = ('created', 'modified',)
 
 class InventoryItemAdmin(admin.ModelAdmin):
     list_display = ('inventory', 'album', 'amount', 'created', 'modified')

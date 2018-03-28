@@ -1,6 +1,6 @@
 # coding=utf-8
 from django.core.context_processors import csrf
-from models import Inventory
+from inventory.models import Inventory
 from attributes.models import Attribute
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
@@ -13,9 +13,14 @@ from mptt.forms import TreeNodeChoiceField
 from mptt.models import MPTTModel
 
 @login_required(login_url='/auth/login/')
-def show_inventory_classes(request):
+def show_inventory_classes(request, status = None):
+    args = {}
+    if status:
+        args['status'] = status
+    args['nodes'] = Inventory.objects.all()
+    args['username'] = auth.get_user(request).username
     return render_to_response("inventory.html",
-                              {'nodes': Inventory.objects.all(), 'username': auth.get_user(request).username},
+                              args,
                               context_instance=RequestContext(request))
 
 class InventoryForm(ModelForm):
@@ -23,7 +28,6 @@ class InventoryForm(ModelForm):
     description = forms.CharField(label="Описание", required=False)
     parent = TreeNodeChoiceField(queryset=Inventory.objects.all(), required=False)
     attrs = forms.ModelMultipleChoiceField(queryset=Attribute.objects.all(), required=False, widget=forms.CheckboxSelectMultiple, label="Доступные атрибуты:")
-
     class Meta:
         model = Inventory
         fields = ['name', 'parent', 'description', 'attrs']
@@ -36,14 +40,13 @@ def edit_inventory(request, id):
     args.update(csrf(request))
     args['id'] = id
     args['username'] = auth.get_user(request).username
-    args['form'] = InventoryForm(instance=instance)
+    args['form'] = InventoryForm(request.POST or None, instance=instance)
+    args['back'] = request.get_full_path()
     if request.POST:
-        print request.POST
         if "cancel" in request.POST:
             return redirect('inventory.views.show_inventory_classes')
-        form = InventoryForm(request.POST, instance=instance)
-        if form.is_valid():
-            form.save()
+        if args['form'].is_valid():
+            args['form'].save()
             return redirect('inventory.views.show_inventory_classes')
         else:
             args['error_messages'] = "Вы ввели некорректные данные. Попробуйте ещё раз."
@@ -51,16 +54,15 @@ def edit_inventory(request, id):
                               args)
 
 @login_required
-def add_inventory(request):
+def add_inventory(request, status = None):
 
     args = {}
     args.update(csrf(request))
     args['username'] = auth.get_user(request).username
-    args['form'] = InventoryForm()
+    args['form'] = InventoryForm(request.POST or None)
     if request.POST:
-        form = InventoryForm(request.POST)
-        if form.is_valid():
-            form.save()
+        if args['form'].is_valid():
+            args['form'].save()
             return redirect('inventory.views.show_inventory_classes')
         else:
             args['error_messages'] = "Вы ввели некорректные данные. Попробуйте ещё раз."
@@ -82,7 +84,7 @@ def delete_inventory(request, id):
     else:
         args['status'] = 'Невозможно удалить выбранный узел!'
 
-    return redirect('inventory.views.show_inventory_classes')
+    return redirect('inventory.views.show_inventory_classes', status=status)
 
 def home_page(request):
     return render_to_response("base.html",

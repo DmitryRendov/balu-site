@@ -13,7 +13,7 @@ class Inventory(models.Model):
 
     created = models.DateTimeField(default=datetime.now(), auto_now_add=True)
     modified = models.DateTimeField(blank=True, null=True)
-    attrs = models.ManyToManyField(Attribute, blank=True, null=True, verbose_name="Атрибуты")
+    attrs = models.ManyToManyField(Attribute, blank=True, null=True, verbose_name="Глобальные атрибуты")
 
     def __unicode__(self):
         return force_unicode("%s" % (self.name))

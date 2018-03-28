@@ -10,10 +10,10 @@
 
 <div class="inventoryedit">
 
-    <h1>Добавить новый глобальный атрибут</h1>
+    <h1>Атрибуты</h1>
 
     <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
       <form class="form-horizontal" role="form" method="post" action="">
          <fieldset>
          {% csrf_token %}
@@ -21,11 +21,11 @@
                 {{ hidden }}
             {% endfor %}
 
-            {% for attribute in form.attributes %}
+            {% for attribute in attributes %}
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="textinput">{{ field.label }}</label>
                 <div class="col-sm-10">
-                  {{ attribute|add_class:"form-control" }}
+                  {{ attribute.name }} {{ attribute.type }} {{ attribute.required }}
                 </div>
               </div>
             {% endfor %}
